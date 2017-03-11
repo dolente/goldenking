@@ -1,14 +1,22 @@
-{% load static %}
+{% load static bootstrap3 %}
 
 <!DOCTYPE html>
+<html lang="en">
 <html>
     <head>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% bootstrap_css %}
         <title>{% block title %}Tyler &amp; Honza Wedding{% endblock %}</title>
     </head>
     <body>
+        <div class="container-fluid">
+
+
         {% block all %}
         {% endblock %}
-        <script src="{% static '' %}">
+        </div>
+        {% bootstrap_javascript jquery=1 %}
     </body>
 </html>

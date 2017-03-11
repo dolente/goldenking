@@ -13,6 +13,14 @@ def _common_context():
 
 
 def index(request):
+    return render(request, 'index.html', _common_context())
+
+
+def thanks(request):
+    return render(request, 'thanks.html', _common_context())
+
+
+def public(request, template_name):
     form = DonationForm()
     if request.method == 'POST':
         form = DonationForm(data=request.POST)
@@ -21,12 +29,4 @@ def index(request):
             return redirect(reverse('thanks'))
     context = _common_context()
     context['form'] = form
-    return render(request, 'index.html', context)
-
-
-def thanks(request):
-    return render(request, 'thanks.html', _common_context())
-
-
-def public(request, template_name):
-    return render(request, 'public/{}.html'.format(template_name), _common_context())
+    return render(request, 'public/{}.html'.format(template_name), context)

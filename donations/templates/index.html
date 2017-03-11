@@ -1,30 +1,11 @@
 {% extends '_base.html' %}
+<!-- řádek výše tahá soubor base.html a použije ho tady (a rozšíří o to co tu připíšu) - tzn všechny formální html pičičinky a tak -->
 
-{% load static %}
+{% load static bootstrap3 %}
 
 {% block all %}
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">odeslat</button>
-    </form>
-
-    <h1>Charity</h1>
-
-    {% for fund in charity_funds %}
-        <h2>
-            {{ fund.name }}:
-            <b>{{ fund.total }}</b> CZK.
-        </h2>
-    {% endfor %}
-
-    <h1>Dary</h1>
-    {% for donation in donations %}
-        {{ donation.name }} dal {{ donation.amount }} CZK pro {{ donation.charity_fund.name }}
-        <br>
-    {% endfor %}
-
-    <img src="{% static 'goodjob.png' %}" />
-
+        <h1>Tyler &amp; Honza wedding</h1>
+        <p>We're planning our wedding, bcs we intend to get married. </p>
+        <p>Come and enjoy the party with us. No wedding presents required, just <a href="{% url "public" "donations"%}">donate to charity</a>.</p>
 {% endblock %}
